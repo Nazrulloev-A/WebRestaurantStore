@@ -12,6 +12,7 @@ import org.testng.annotations.Parameters;
 import webstorerestaurant.com.utils.BrowserUtils;
 import webstorerestaurant.com.utils.Driver;
 
+import java.time.Duration;
 import java.util.List;
 
 public class HomePage {
@@ -32,10 +33,10 @@ public class HomePage {
     @FindBy(xpath = "//a[contains(text(),'View Cart')]")
     WebElement viewButton;
 
-    @FindBy(xpath = "//a[contains(text(),'Empty Cart')]")
+    @FindBy(xpath = "//button[contains(text(),'Empty Cart')]")
     WebElement emtpyCardButton;
 
-    @FindBy(xpath = "//button[contains(text(),'Empty Cart')]")
+    @FindBy(xpath = "/html/body/div[11]/div/div/div/footer/button[1]")
     WebElement emtpyCardValidationToRemove;
 
     @FindBy(xpath = "//p[contains(text(),'Your cart is empty.')]")
@@ -66,14 +67,14 @@ public class HomePage {
 
     public void emptyCardButton(WebDriver driver) {
         emtpyCardButton.click();
-        WebDriverWait wait = new WebDriverWait(driver,10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(emtpyCardValidationToRemove));
         wait.until(ExpectedConditions.elementToBeClickable(emtpyCardValidationToRemove));
         emtpyCardValidationToRemove.click();
 
     }
     public String validationOfMessage(WebDriver driver) throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver,10);
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(cartIsEmpty));
        return BrowserUtils.getText(cartIsEmpty);
     }
