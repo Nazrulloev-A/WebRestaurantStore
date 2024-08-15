@@ -36,7 +36,7 @@ public class HomePage {
     @FindBy(xpath = "//button[contains(text(),'Empty Cart')]")
     WebElement emtpyCardButton;
 
-    @FindBy(xpath = "/html/body/div[11]/div/div/div/footer/button[1]")
+    @FindBy(xpath = "//*[@id= 'td']/div[12]/div/div/div/footer/button[1]")
     WebElement emtpyCardValidationToRemove;
 
     @FindBy(xpath = "//p[contains(text(),'Your cart is empty.')]")
